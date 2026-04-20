@@ -87,8 +87,16 @@ def main():
             continue
 
         # Shuffle Loop
+        seen = set()
+        reset_threshold = len(tabs) // 2
         while True:
-            song = random.choice(tabs)
+            if len(seen) >= reset_threshold:
+                seen.clear()
+
+            candidates = [t for t in tabs if t['song_url'] not in seen]
+            song = random.choice(candidates)
+            seen.add(song['song_url'])
+
             print(f"\n🎸 PICKED: {song['song_name']} - {song['band_name']}")
             cmd = input("[Enter] Open | [s] Skip | [b] Back to Menu: ").lower()
             if cmd == '':
