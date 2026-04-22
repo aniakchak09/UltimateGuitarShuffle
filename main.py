@@ -1,6 +1,6 @@
 import os
 import random
-import subprocess
+import webbrowser
 from dotenv import load_dotenv, set_key  # Added set_key
 from ug_api import UGClient
 
@@ -100,7 +100,7 @@ def main():
             print(f"\n🎸 PICKED: {song['song_name']} - {song['band_name']}")
             cmd = input("[Enter] Open | [s] Skip | [b] Back to Menu: ").lower()
             if cmd == '':
-                subprocess.run(['/mnt/c/Windows/System32/cmd.exe', '/c', 'start', song['song_url']])
+                webbrowser.open(song['song_url'])
             elif cmd == 'b':
                 break
 

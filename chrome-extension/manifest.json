@@ -1,0 +1,23 @@
+{
+  "manifest_version": 3,
+  "name": "UG Shuffler",
+  "version": "1.0",
+  "description": "Shuffle your Ultimate Guitar playlists and favorites",
+  "permissions": ["tabs", "storage"],
+  "host_permissions": ["*://*.ultimate-guitar.com/*"],
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "UG Shuffler"
+  },
+  "content_scripts": [
+    {
+      "matches": ["*://*.ultimate-guitar.com/*"],
+      "js": ["content_main.js"],
+      "world": "MAIN"
+    },
+    {
+      "matches": ["*://*.ultimate-guitar.com/*"],
+      "js": ["content_bridge.js"]
+    }
+  ]
+}
